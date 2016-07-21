@@ -32,4 +32,24 @@ class AppComponent {
     Selection sel = window.getSelection();
     return sel.toString() != "";
   }
+
+  void addNegation() {
+    Selection sel = window.getSelection();
+    Element element = window.document.createElement('negation');
+    element.text = sel.toString();
+
+    Range range = sel.getRangeAt(0);
+    range.deleteContents();
+    range.insertNode(element);
+  }
+
+  void addNegationSource() {
+    Selection sel = window.getSelection();
+    Element element = window.document.createElement('neg-source');
+    element.text = sel.toString();
+
+    Range range = sel.getRangeAt(0);
+    range.deleteContents();
+    range.insertNode(element);
+  }
 }

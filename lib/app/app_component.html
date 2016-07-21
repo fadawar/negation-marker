@@ -14,5 +14,6 @@
   {{content}}
   <div *ngIf="isSelectedText()" class="negation-panel" [ngStyle]="{'left': negPanelX, 'top': negPanelY}">
     <button (click)="addNegation()">+ Negation</button>
+    <button (click)="addNegationSource()">+ Source</button>
   </div>
 </div>
