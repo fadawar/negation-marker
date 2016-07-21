@@ -10,7 +10,7 @@ import 'package:angular2/core.dart';
 class AppComponent {
   bool pastingText = false;
   String content = '''
-  In JavaScript, when an object is passed to a function expecting a string (like window.alert() or document.write()), the object's toString() method is called and the returned value is passed to the function. This can make the object appear to be a string when used with other functions when it is really an object with properties and methods. In the above example, selObj.toString() is automatically called when it is passed to window.alert(). However, attempting to use a JavaScript String property or method such as length or substr directly on a Selection object will result in an error if it does not have that property or method and may return unexpected results if it does. To use a Selection object as a string, call its toString() method directly:
+  In JavaScript, <strong>when</strong> an object is passed to a function expecting a string (like window.alert() or document.write()), the object's toString() method is called and the returned value is passed to the function. This can make the object appear to be a string when used with other functions when it is really an object with properties and methods. In the above example, selObj.toString() is automatically called when it is passed to window.alert(). However, attempting to use a JavaScript String property or method such as length or substr directly on a Selection object will result in an error if it does not have that property or method and may return unexpected results if it does. To use a Selection object as a string, call its toString() method directly:
   ''';
   String negPanelX = '0px';
   String negPanelY = '0px';
@@ -57,12 +57,19 @@ class AppComponent {
     Range range = sel.getRangeAt(0);
     range.deleteContents();
     range.insertNode(element);
+    updateContent();
+  }
+
+  void updateContent() {
+    Element el = querySelector('#articleContent');
+    content = el.innerHtml;
   }
 
   void replaceTargetWithText() {
     Element el = mouseUpEvent.target;
     String text = el.text;
     el.replaceWith(new Text(text));
+    updateContent();
   }
 
   bool isNegationOrNegSource() {
@@ -71,5 +78,17 @@ class AppComponent {
       mouseUpEvent != null &&
       (target.tagName.toLowerCase() == 'negation' ||
       target.tagName.toLowerCase() == 'neg-source');
+  }
+
+  void exportToXML() {
+    String text = '''
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+  $content
+</article>''';
+    Blob file = new Blob([text], 'text/xml');
+    AnchorElement a = new AnchorElement(href: Url.createObjectUrlFromBlob(file));
+    a.download = "file.xml";
+    a.click();
   }
 }

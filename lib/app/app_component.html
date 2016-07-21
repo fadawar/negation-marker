@@ -1,17 +1,17 @@
 <nav>
   <button (click)="showPasteText()">Paste Text</button>
+  <button (click)="exportToXML()">Export XML</button>
 </nav>
 
 <div *ngIf="pastingText">
   <textarea #pastedText cols="30" rows="10" autofocus></textarea>
   <div>
     <button (click)="loadPastedText(pastedText.value)">Save</button>
-    <button>Cancel</button>
+    <button (click)="pastingText = false">Cancel</button>
   </div>
 </div>
 
-<div class="xml content" (mouseup)="showNegationPanel($event)">
-  {{content}}
+<div id="articleContent" class="xml content" (mouseup)="showNegationPanel($event)" [innerHTML]="content">
 </div>
 
 <div *ngIf="isSelectedText()" class="negation-panel" [ngStyle]="{'left': negPanelX, 'top': negPanelY}">
