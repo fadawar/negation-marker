@@ -12,6 +12,7 @@ class AppComponent {
   ''';
   String negPanelX = '0px';
   String negPanelY = '0px';
+  MouseEvent mouseUpEvent = null;
 
   void showPasteText() {
     pastingText = true;
@@ -24,6 +25,7 @@ class AppComponent {
 
   void showNegationPanel(event) {
     event.preventDefault();
+    mouseUpEvent = event;
     negPanelX = '${event.clientX}px';
     negPanelY = '${event.clientY}px';
   }
@@ -51,5 +53,18 @@ class AppComponent {
     Range range = sel.getRangeAt(0);
     range.deleteContents();
     range.insertNode(element);
+  }
+
+  void replaceTargetWithText() {
+    Element el = mouseUpEvent.target;
+    String text = el.text;
+    el.replaceWith(new Text(text));
+  }
+
+  bool isNegationOrNegSource() {
+    return
+      mouseUpEvent != null &&
+      (mouseUpEvent.target.tagName.toLowerCase() == 'negation' ||
+      mouseUpEvent.target.tagName.toLowerCase() == 'neg-source');
   }
 }

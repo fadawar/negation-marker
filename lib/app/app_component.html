@@ -12,8 +12,12 @@
 
 <div class="xml content" (mouseup)="showNegationPanel($event)">
   {{content}}
-  <div *ngIf="isSelectedText()" class="negation-panel" [ngStyle]="{'left': negPanelX, 'top': negPanelY}">
-    <button (click)="addNegation()">+ Negation</button>
-    <button (click)="addNegationSource()">+ Source</button>
-  </div>
+</div>
+
+<div *ngIf="isSelectedText()" class="negation-panel" [ngStyle]="{'left': negPanelX, 'top': negPanelY}">
+  <button (click)="addNegation()">+ Negation</button>
+  <button (click)="addNegationSource()">+ Source</button>
+  <button (click)="replaceTargetWithText()" *ngIf="isNegationOrNegSource()">
+    - Remove
+  </button>
 </div>
