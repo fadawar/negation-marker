@@ -1,5 +1,7 @@
-import 'package:angular2/core.dart';
 import 'dart:html';
+import 'dart:js' as js;
+
+import 'package:angular2/core.dart';
 
 @Component(
     selector: 'main-app',
@@ -36,18 +38,20 @@ class AppComponent {
   }
 
   void addNegation() {
-    Selection sel = window.getSelection();
-    Element element = window.document.createElement('negation');
-    element.text = sel.toString();
-
-    Range range = sel.getRangeAt(0);
-    range.deleteContents();
-    range.insertNode(element);
+    addElementAroundSelection('negation');
   }
 
   void addNegationSource() {
+    addElementAroundSelection('neg-source');
+  }
+
+  void addElementAroundSelection(String elementName) {
+    // snap selection to word
+    js.context['rangy'].callMethod('getSelection').callMethod('expand', ['word']);
+    js.context['rangy'].callMethod('getSelection').callMethod('trim');
+
     Selection sel = window.getSelection();
-    Element element = window.document.createElement('neg-source');
+    Element element = window.document.createElement(elementName);
     element.text = sel.toString();
 
     Range range = sel.getRangeAt(0);
@@ -62,9 +66,10 @@ class AppComponent {
   }
 
   bool isNegationOrNegSource() {
+    Element target = mouseUpEvent.target;
     return
       mouseUpEvent != null &&
-      (mouseUpEvent.target.tagName.toLowerCase() == 'negation' ||
-      mouseUpEvent.target.tagName.toLowerCase() == 'neg-source');
+      (target.tagName.toLowerCase() == 'negation' ||
+      target.tagName.toLowerCase() == 'neg-source');
   }
 }
