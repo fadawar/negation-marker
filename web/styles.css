@@ -1,0 +1,48 @@
+/* Master Styles */
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+body {
+  margin: 2em;
+}
+body, input[text], button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+/* . . . */
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
+  z-index: 0;
+}
+
+.negation-panel {
+  position: absolute;
+  z-index: 1;
+}
+
+/* XML */
+div.xml {
+  line-height: 1.5;
+}
+negation {
+  display: inline;
+  background: rgb(201,255,11);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+neg-source {
+  display: inline;
+  border-bottom: 3px solid red;
+}
