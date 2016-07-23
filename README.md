@@ -10,7 +10,7 @@ Install `dart`, `pub`. Run `pub get` and then you can start server with
 pub serve
 ```
 
-Usual url is http://localhost:8080/
+The usual url is [http://localhost:8080](http://localhost:8080)
 
 Libraries
 ---------
