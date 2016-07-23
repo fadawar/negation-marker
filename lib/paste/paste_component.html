@@ -1,6 +1,9 @@
-<div>
-  <textarea #pastedText cols="30" rows="10" autofocus></textarea>
-  <div>
-    <button (click)="loadPastedText(pastedText.value)">Save</button>
+<form role="form">
+  <div class="form-group">
+    <label for="article-text">Article:</label>
+    <textarea #pastedText class="form-control" rows="5" id="article-text" autofocus></textarea>
   </div>
-</div>
+  <div class="form-group">
+    <button (click)="loadPastedText(pastedText.value)" class="btn btn-success">Save</button>
+  </div>
+</form>
