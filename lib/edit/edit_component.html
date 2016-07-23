@@ -1,7 +1,15 @@
-<div id="articleContent" class="xml content" (mouseup)="showNegationPanel($event)" [innerHTML]="getCurrentContent()"></div>
+<div id="articleContent" class="xml content" (mouseup)="showNegationPanel($event)"
+     [innerHTML]="getCurrentContent()"></div>
 
 <div *ngIf="isSelectedText()" class="negation-panel" [ngStyle]="{'left': negPanelX, 'top': negPanelY}">
-  <button (click)="addNegation()">+ Negation</button>
-  <button (click)="addNegationSource()">+ Source</button>
-  <button (click)="replaceTargetWithText()" *ngIf="isNegationOrNegSource()">- Remove</button>
+  <button (click)="addNegation()" class="btn btn-success" title="Mark negation">
+    <i class="fa fa-plus" aria-hidden="true"></i> Negation
+  </button>
+  <button (click)="addNegationSource()" class="btn btn-info" title="Mark source of negation">
+    <i class="fa fa-plus" aria-hidden="true"></i> Source
+  </button>
+  <button (click)="replaceTargetWithText()" *ngIf="isNegationOrNegSource()" class="btn btn-danger"
+          title="Remove marked negation OR source">
+    <i class="fa fa-trash" aria-hidden="true"></i> Remove
+  </button>
 </div>

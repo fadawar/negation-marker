@@ -3,13 +3,13 @@
 }
 
 .negation-panel {
-  position: absolute;
+  position: fixed;
   z-index: 1;
 }
 
 /* XML */
 div.xml {
-  line-height: 1.5;
+  line-height: 1.8;
 }
 negation {
   display: inline;
