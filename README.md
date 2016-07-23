@@ -16,3 +16,16 @@ Libraries
 ---------
 
 [Rangy](https://github.com/timdown/rangy)
+
+XML structure
+-------------
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+  <meta>
+    <url>http://...</url>
+    <created>2016-07-23</created>
+  </meta>
+  Lorem ipsum...
+</article>
+```
