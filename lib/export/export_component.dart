@@ -28,11 +28,11 @@ class ExportComponent implements OnInit {
   void exportToXML() {
     String text = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<meta>
-  <url>$url</url>
-  <created>$date</created>
-</meta>
 <article>
+  <meta>
+    <url>$url</url>
+    <created>$date</created>
+  </meta>
   ${article.currentContent}
 </article>''';
     Blob file = new Blob([text], 'text/xml');

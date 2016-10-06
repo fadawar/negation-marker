@@ -12,6 +12,8 @@ pub serve
 
 The usual url is [http://localhost:8080](http://localhost:8080)
 
+**Works only in Dartium (Chromium)**
+
 Libraries
 ---------
 
