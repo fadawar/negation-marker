@@ -1,0 +1,13 @@
+<form #exportForm="ngForm">
+  <div class="form-group">
+    <label for="urlInput">Url for article</label>
+    <input type="text" class="form-control" id="urlInput" name="urlInput" [(ngModel)]="url"
+           placeholder="https://dennikn.sk/479534/" required>
+  </div>
+  <div class="form-group">
+    <label for="dateInput">Date of creation</label>
+    <input type="text" class="form-control" id="dateInput" name="dateInput " [(ngModel)]="date"
+           placeholder="YYYY-MM-DD" required>
+  </div>
+  <button (click)="exportToFile()" [disabled]="!exportForm.form.valid" type="submit" class="btn btn-success">Export</button>
+</form>
