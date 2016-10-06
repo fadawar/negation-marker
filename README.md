@@ -13,6 +13,8 @@ It's written in Angular 2 with Typescript.
 
 `typings list`
 
+`python -m SimpleHTTPServer`
+
 ## Stuff
 I had to add definitions of this functions to RangySelection:
 ```
